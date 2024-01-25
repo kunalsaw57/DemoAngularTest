@@ -1,0 +1,42 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <h2>Sign Up</h2>
+
+  <div class="form-group">
+    <label for="firstname">First Name:</label>
+    <input type="text" formControlName="firstname" id="firstname" class="form-control" required />
+    @if(signupForm.get('firstname').touched && signupForm.get('firstname').invalid){
+      <p class="error">*Name is required</p>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Last Name:</label>
+    <input type="text" formControlName="lastname" id="lastname" class="form-control" required />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" formControlName="email" id="email" class="form-control" required />
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" formControlName="password" id="password" class="form-control" required />
+  </div>
+
+  <div class="form-group">
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" formControlName="confirmPassword" id="confirmPassword" class="form-control" required />
+  </div>
+
+  <div class="form-group">
+    <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" required />
+    <label for="acceptTerms">I accept the terms and conditions.</label>
+  </div>
+
+  @if (this.signupForm.valid) {
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  } @else {
+    <button type="submit" class="btn btn-secondary">Sign Up</button>
+  }
+</form>
